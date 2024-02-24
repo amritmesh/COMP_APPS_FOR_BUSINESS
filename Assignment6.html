@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+
+        <!--My name is Amrit and I am in section 21.-->
+        <!--On my honor, I have neither received nor given any unauthorized assistance on this assignment.-->
+        
+        <title>The United States Congress</title>
+    </head>
+
+    <body>
+    <script>
+        var finalTireCost = 0;
+        var finalOilCost = 0; 
+        var finalConciergeServiceCost = 0;
+        var conciergeFee = 0;
+
+        var tireReplacement = prompt("Tire replacement (Yes / No): ");
+        if (tireReplacement == "Yes")
+        {
+            var tireQuality = prompt("Enter tire quality (Premium / Budget): ");
+            var numTires = prompt("Enter number of tires: ");
+        }
+
+        var oilChange = prompt("Oil change (Yes / No): ");
+        if (oilChange == "Yes")
+        {
+            var oilType = prompt("Enter oil type (Synthetic / Non-Synthetic): ");
+        }
+        
+        var conciergeService = prompt("Concierge service (Yes / No): ");
+        if (conciergeService == "Yes")
+        {
+            var vehicleCleaning = prompt("Vehicle cleaning (Yes / No): ");
+        }
+
+        if (tireReplacement == "Yes")
+        {
+            if (tireQuality == "Premium")
+                var tireCost = numTires * (230 + 20);
+            else
+                var tireCost = numTires * (150 + 20);
+            finalTireCost = tireCost + 30;
+        }
+        else
+            finalTireCost = 0;
+        
+        if (oilChange == "Yes"){
+            if (oilType == "Synthetic")
+                var oilCost = 80;
+            else
+                var oilCost = 65;
+            finalOilCost = oilCost + 30;
+        }
+        else
+        {
+            finalOilCost = 0;
+        }
+
+        if (conciergeService == "Yes")
+        {
+            if (vehicleCleaning == "Yes")
+                var cleaningCost = 40;
+            else
+                var cleaningCost = 0;
+            var surcharge = .15 * (cleaningCost + finalTireCost + finalOilCost);
+            if (surcharge >= 75)
+                var conciergeFee = 75;
+            else
+                var conciergeFee = surcharge;
+            finalConciergeServiceCost = cleaningCost;
+        }
+        else
+            finalConciergeServiceCost = 0;
+
+        var totalServicePrice = (Number)((finalTireCost + finalOilCost + finalConciergeServiceCost).toFixed(2));
+        alert("Total Price: $" + totalServicePrice.toFixed(2));
+
+        if (conciergeService == "Yes")
+        {
+            conciergeFee = (Number)(conciergeFee.toFixed(2));
+            alert("Concierge Service Fee: $" + conciergeFee.toFixed(2));
+        }
+
+        var salesTaxAmount = (Number)((.07 * (totalServicePrice + conciergeFee)).toFixed(2));
+        alert("Sales Tax: $" + salesTaxAmount.toFixed(2));
+
+        var finalCost = totalServicePrice + conciergeFee + salesTaxAmount;
+        alert("Final Cost: $" + finalCost.toFixed(2));
+    </script>
+    </body>
+</html>

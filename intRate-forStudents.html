@@ -1,0 +1,76 @@
+<DOCTYPE! html>
+<html>
+<head>
+	<meta charset = "UTF-8" />
+	<title> Compund Interest Rate #2</title>
+
+	<style>
+			body {background-color: bisque; font-family: optima;
+								color: brown; text-align: center}
+			p { font-size: 20px}
+			button {font-size: 20px; background-color: coral}
+			input { font-size: 20px}
+	 </style>
+
+</head>
+<body>
+	<script>
+	var origAmount;
+	var numYears;
+	var annIntRate;
+	var numPerYear;
+
+  function totalWithInterest(c,t,r,n) {
+		// c is original deposit
+		// t is number of years
+		// r is interest Rate
+		// n is number of interest payments per year
+
+		//PUT CODE HERE---do not use Math.round here
+		return c * Math.pow((1 + (r / n)), n * t);
+	}
+
+	</script>
+
+	<p> Enter the initial deposit	</p>
+	<input = "text" id = "dep" value = ""
+		onchange = "
+		    origAmount = Number(dep.value);
+		"/>
+		<p> Enter the number of years your money will be deposited	</p>
+		<input = "text" id = "years" value = ""
+			onchange = "
+			    numYears = Number(years.value);
+			"
+			/>
+			<p> Enter the annual interest rate	</p>
+			<input = "text" id = "rate" value = ""
+				onchange = "
+						annIntRate = Number(rate.value);
+				"
+				/>
+
+				<p> Enter the number of interest payments per year	</p>
+				<input = "text" id = "numIntPay" value = ""
+					onchange = "
+							numPerYear = Number(numIntPay.value);
+					"
+					/>
+					<br><br>
+					<button id= "getTotal"
+					onclick = "
+						// PUT CODE HERE...this button calls the function
+						// and puts result in totMoney textbox rounded to 2 decimal
+						// values.
+
+						// var tot = totalWithInterest(Number(dep.value), years.value, rate.value, numIntPay.value)
+						var tot = totalWithInterest(origAmount, numYears, annIntRate, numPerYear)
+						totMoney.value = '$' + tot.toFixed(2)
+						"> Calculate Total Amount </button>
+
+					<p>Your total amount of money after the deposit period is:</p>
+					<input = "text" id = "totMoney" value = ""readonly />
+
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--My name is Amrit and I am in section 21.-->
+        <!--On my honor, I have neither received nor given any unauthorized assistance on this assignment.-->
+
+		<meta charset="UTF-8"> 
+		<title>Car Service</title>
+		<style>
+			/* You may set the colors of your preference below */
+			/* body {color: someColor; background-color: someOtherColor} */
+			body {color: darkblue; background-color: lightcyan}
+		</style>
+		<script>
+			// Declare the variables here 
+			var tireReplacement, tireType, oilChange, oilType, conciergeService, vehicleCleaning, numTires;
+			// Initialize appropriate variable here
+			tireReplacement = "";
+        	tireType = ""; 
+        	oilChange = "";
+        	oilType = "";
+			conciergeService = "";
+			vehicleCleaning = "";
+			numTires = 0;
+
+		</script>
+ 	</head>
+	<body>
+		<h1>Car Service</h1>
+		
+		<h2>Inputs</h2>
+		<table>
+			<tr>
+				<td>Tire Replacement:</td>   
+				<td>
+					<!-- Radio buttons for selecting tire replacement (Yes/No) --> 
+					<input type="radio" name="tireReplacement" id="tireYes" onclick='
+					tireReplacement = "Yes";
+					'> Yes
+					<input type="radio" name="tireReplacement" id="tireNo" onclick='
+					tireReplacement = "No";
+					'> No
+				</td>
+			</tr>
+
+				<td>Tire Type: </td>
+				<td>
+					<!-- Radio buttons for selecting tire type (Premium/Budget) -->
+					<input type="radio" name="tireType" id="premium" onclick='
+					tireType = "Premium";
+					'> Premium
+					<input type="radio" name="tireType" id="budget" onclick='
+					tireType = "Budget";
+					'> Budget				
+				</td>
+			</tr>
+			<tr>
+				<td>Number of Tires: </td>
+				<!-- Text box for number of tires -->
+				<td><input type="text" id="numberOfTires" onchange=''></td>
+			</tr>
+			<tr>
+				<td>Oil Change: </td>
+				<td> 
+					<!-- Radio buttons for selecting oil change (Yes/No) -->
+					<input type="radio" name="oilChange" id="oilYes" onclick='
+					oilChange = "Yes";
+					'> Yes
+					<input type="radio" name="oilChange" id="oilNo" onclick='
+					oilChange = "No";
+					'> No 
+				</td>
+			</tr>
+			<tr>
+				<td>Oil Type: </td>
+				<td> 
+					<!-- Radio buttons for selecting tire type (Synthetic/Non-Synthetic) -->
+					<input type="radio" name="oilType" id="synthetic" onclick='
+					oilType = "Synthetic";
+					'> Synthetic
+					<input type="radio" name="oilType" id="nonSynthetic" onclick='
+					oilType = "Non-Synthetic";
+					'> Non-Synthetic	
+				</td>
+			</tr>
+			<tr>
+				<td>Concierge Service: </td>
+				<td>
+					<!-- Radio buttons for selecting concierge service (Yes/No) --> 
+					<input type="radio" name="conciergeService" id="concYes" onclick='
+					conciergeService = "Yes";
+					'> Yes
+					<input type="radio" name="conciergeService" id="concNo" onclick='
+					conciergeService = "No";
+					'> No  
+				</td>
+			</tr>
+			<tr>
+				<td>Vehicle Cleaning: </td>
+				<td>
+					<!-- Radio buttons for selecting vehicle cleaning (Yes/No) -->
+					<input type="radio" name="vechicleCleaning" id="cleanYes" onclick='
+					vehicleCleaning = "Yes";
+					'> Yes
+					<input type="radio" name="vehicleCleaning" id="cleanNo" onclick='
+					vehicleCleaning = "No";
+					'> No
+				</td>
+			</tr>
+
+		</table>
+		
+		<p>
+ 	  	    <button onclick='
+				// Code for reading the data, processing the data and displaying the results on the appropriate text boxes
+				var finalTireCost = 0;
+        		var finalOilCost = 0; 
+        		var finalConciergeServiceCost = 0;
+        		var conciergeFee = 0;	
+				numTires = numberOfTires.value;
+
+				if (tireReplacement == "Yes")
+				{
+					if (tireType == "Premium")
+						var tireCost = numTires * (230 + 20);
+					else
+						var tireCost = numTires * (150 + 20);
+					finalTireCost = tireCost + 30;
+				}
+				else
+					finalTireCost = 0;
+				
+				if (oilChange == "Yes"){
+					if (oilType == "Synthetic")
+						var oilCost = 80;
+					else
+						var oilCost = 65;
+					finalOilCost = oilCost + 30;
+				}
+				else
+				{
+					finalOilCost = 0;
+				}
+
+				if (conciergeService == "Yes")
+				{
+					if (vehicleCleaning == "Yes")
+						var cleaningCost = 40;
+					else
+						var cleaningCost = 0;
+					var surcharge = .15 * (cleaningCost + finalTireCost + finalOilCost);
+					if (surcharge >= 75)
+						var conciergeFee = 75;
+					else
+						var conciergeFee = surcharge;
+					finalConciergeServiceCost = cleaningCost;
+				}
+				else
+					finalConciergeServiceCost = 0;
+
+				var totalServicePrice = (Number)((finalTireCost + finalOilCost + finalConciergeServiceCost).toFixed(2));
+				totalService.value = totalServicePrice.toFixed(2);
+
+				if (conciergeService == "Yes")
+				{
+					conciergeFee = (Number)(conciergeFee.toFixed(2));
+					conciergeServiceVal.value = conciergeFee.toFixed(2);
+				}
+
+				var salesTaxAmount = (Number)((.07 * (totalServicePrice + conciergeFee)).toFixed(2));
+				salesTax.value = salesTaxAmount.toFixed(2);
+
+				var finalCost = totalServicePrice + conciergeFee + salesTaxAmount;
+				finalBill.value = finalCost.toFixed(2);
+			'>Process</button>
+ 	  	    	
+			<button onclick='
+				// Code for clearing content of text boxes and radio buttons, resetting variables	
+				tireReplacement = "";
+				tireType = ""; 
+				oilChange = "";
+				oilType = "";
+				conciergeService = "";
+				vehicleCleaning = "";
+				numTires = 0;
+
+				numberOfTires.value = "";
+				totalService.value = "";
+				conciergeServiceVal.value = "";
+				salesTax.value = "";
+				finalBill.value = "";
+
+				tireYes.checked = false;
+				tireNo.checked = false;
+				premium.checked = false;
+				budget.checked = false;
+				oilYes.checked = false;
+				oilNo.checked = false;
+				synthetic.checked = false;
+				nonSynthetic.checked = false;
+				concYes.checked = false;
+				concNo.checked = false;
+				cleanYes.checked = false;
+				cleanNo.checked = false;
+
+			'>Clear</button>
+ 	  	</p>
+		
+		<h2>Outputs</h2>
+		<table>
+			<tr>
+				<td>Total Service: </td>
+				<!-- Text box for Total Service -->
+				<td>$<input type="text" id="totalService" onchange=''></td>
+			</tr>
+			<tr>
+				<td>Concierge Service: </td>
+				<!-- Text box for Concierge Service -->
+				<td>$<input type="text" id="conciergeServiceVal" onchange=''></td>
+			</tr>
+			<tr>
+				<td>Sales Tax: </td>
+				<!-- Text box for Sales Tax -->
+				<td>$<input type="text" id="salesTax" onchange=''></td>
+			</tr>
+			<tr>
+				<td>Final Bill: </td>
+				<!-- Text box for Final Bill -->
+				<td>$<input type="text" id="finalBill" onchange=''></td>
+			</tr>
+
+		</table>	
+		
+ 	</body>
+</html>

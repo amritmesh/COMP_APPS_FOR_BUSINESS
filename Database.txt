@@ -1,0 +1,34 @@
+https://www.programiz.com/sql/online-compiler/
+
+Create table Merge_Customer
+(customer_id    int,
+ first_name     varchar(100),
+ last_name      varchar(100),
+ age            int,
+ country        varchar(100))
+
+
+INSERT INTO Merge_Customer
+VALUES (8, "Forest", "Gump", 55, "USA");
+ INSERT INTO Merge_Customer
+VALUES (9, "Mickey", "Mouse", 44, "USA");
+ INSERT INTO Merge_Customer
+VALUES (10, "Jelly", "Bean", 34, "USA");
+ INSERT INTO Merge_Customer
+VALUES (11, "Big", "Ben", 50, "UK");
+ INSERT INTO Merge_Customer
+VALUES (5, "Rudolph", "Snow", 50, "UK");
+
+ 
+ create table Country
+ (country_cd   varchar(10),
+  country_name  varchar(100))
+ 
+  INSERT INTO Country
+VALUES ("USA","United States");
+ INSERT INTO Country
+VALUES ("UK","United Kingdom");
+ INSERT INTO Country
+VALUES ("UAE","United Arab Emirates");
+ INSERT INTO Country
+VALUES ("CAN","Canada");

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> Parallax Motors </title> 
+        <style>
+            body{background-color:bisque};
+            p{font-size: 20px};
+        </style>
+    </head>
+
+    <body>
+        <h1>Parallax Motors Corp.</h1>
+        <h2>Sales ($ millions)</h2>
+
+        <p>Eastern Divison <input type="text" id="eastern" onchange=''></p>
+
+        <p>Western Division <input type="text" id="western" onchange=''></p>
+        <p><button onclick='
+            var total_2021 = Number(eastern.value) + Number(western.value);
+            sales2021.value = total_2021;
+            '>Calculate 2021 Total</button></p>
+
+        <p>2021 Total Sales <input type="text" id="sales2021" onchange=''></p>
+
+        <p>Estimate for 2022</p>
+
+        <input type="radio" name="estimate" id="high" onclick='
+            var high_sales = sales2021.value*1.3;
+            sales2022.value = high_sales;
+            '> High
+        <input type="radio" name="estimate" id="low" onclick='
+            var low_sales = sales2021.value*1.1;
+            sales2022.value = low_sales;
+            '> Low
+
+        <p>2022 Expected Sales <input type="text" id="sales2022" onchange=''></p>
+    </body> 
+</html>

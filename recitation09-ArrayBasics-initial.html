@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "UTF-8" />
+    <title> Array Basics </title>
+  </head>
+
+  <body>
+    <h1>Array Tasks</h1>
+    <h4>People and the number of books they own</h4>
+    <script>
+    //prints the array values in order
+    function printArray(a){
+      for (var i = 0; i < a.length; i++){
+        document.write(a[i] + ' ');
+      }
+      document.write('<br><br>');
+    }
+
+    //prints the array values in reverse order
+    function printReverse(a){
+      for (var i = a.length - 1; i >= 0; i--){
+        document.write(a[i] + ' ');
+      }
+      document.write('<br><br>');
+    }
+
+    //finds and returns the average of the array values
+    function findAverage(a){
+      var sum = 0;
+      for (i = 0; i < a.length; i++){
+        sum = sum + a[i];
+      }
+      var average = sum / a.length;
+      return average;
+    }
+
+    //finds and returns the index of the largest element in the array
+    function findLargestIndex(a){
+      var large = a[0];
+      var largePosition = 0;
+      for (var i = 0; i < a.length; i++){
+        if (a[i] > large){
+          large = a[i];
+          largePosition = i;
+        }
+      }
+      return largePosition;
+    }
+
+    //creates array of names
+    var names = new Array("joey","mary","tomm","mark","dave", "eric", 'jenn',"anru","dana","paul");
+    //creates an array of 2-digit integers
+    var books = new Array(10);
+    for(var i = 0; i < 10; i++){
+      rand = Math.floor(Math.random() * 90) + 10; //10-99
+      books[i] = rand;
+    }
+
+    //traverse array in order
+    document.write ('Traversing books owned in order <br>');
+    ////call printArray with books as argument
+    printArray(books);
+
+    //traverse array in order
+    document.write ('Traversing names in order <br>');
+    //call printArray with names as argument
+    printArray(names);
+
+    //traverse array in reverse order
+    document.write ('Traversing books owned in reverse order <br>');
+    //call printReverse with books as argument
+    printReverse(books);
+
+    //traverse array in reverse order
+    document.write ('Traversing names in reverse order <br>');
+    //call printReverse with names as argument
+    printReverse(names);
+
+    //Finding average of array values
+    //Assign to the variable avg the result of calling findAverage with books as the argument
+    var avg = findAverage(books);
+    document.write ("The average of the books owned in the array is: " + avg);
+    document.write('<br><br>');
+
+    //Finding WHERE the largest number is in the books array
+    var where = findLargestIndex(books);
+    var largest = 0; //replace 0 with largest number in the books array
+    var who = 0; //replace 0 with person who has the most books (person in the WHERE position)
+    document.write ("The largest number of books owned is: " + largest + "<br>");
+    document.write (who + " owns the most books");
+    document.write('<br><br>');
+
+    //Printing bar graph by values in number array
+    document.write("A bar graph display of books owned by each person <br>");
+    /* need a nested loop here. Outer loop will print name and a break and then
+       number of books for that person and then a couple spaces and then ...
+       the inner loop will print the appropriate number of stars
+    */
+    </script>
+  </body>
+</html>

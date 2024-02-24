@@ -1,0 +1,11 @@
+<script>
+	var revenues, expenses, earnings, taxes;
+    revenues = prompt("Enter revenues");
+    expenses = prompt("Enter expenses");
+    earnings = revenues - expenses;
+    if (earnings < 500000)
+    	taxes = earnings * 0.2;
+    else
+    	taxes = earnings * 0.3;
+	alert("Your taxes are: " + taxes);
+</script>

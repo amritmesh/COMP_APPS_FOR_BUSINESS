@@ -1,0 +1,32 @@
+body{
+    background-color:cornsilk;
+}
+
+.nav {
+    background-color:lightgrey;
+    overflow:hidden;
+}
+
+.nav a{
+    float: left;
+    color:brown;
+    text-align: center;
+    padding: 15px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.nav a.active{
+    background-color:darksalmon;
+}
+
+.nav_right a{
+    float:right;
+}
+
+.box{
+    background-color: bisque;
+    border: 13px solid brown;
+	padding: 50px;
+	margin: 20px;
+}

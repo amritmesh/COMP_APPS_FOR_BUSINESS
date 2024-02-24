@@ -1,0 +1,1 @@
+The primary key for the FINANCIAL_REPORTING table would be: account, business_unit, currency, reporting_year, scenario

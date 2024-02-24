@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--My name is Amrit and I am in section 21.-->
+        <!--On my honor, I have neither received nor given any unauthorized assistance on this assignment.-->
+		<meta charset="UTF-8"> 
+		<title>Cellphone Store</title>
+		<style>
+			/* You may set the colors of your preference below */	
+			/* body {color: someColor; background-color: someOtherColor} */
+			body {color: darkred; background-color: lightyellow}
+		</style>
+		<script>
+			// Declare the variables and arrays here
+			var brandName, numUnits, counter, total;
+			var brandList, priceList, displayBrandName, displayUnitPrice, displayNumUnits, displaySubtotal;
+			// Define functions here
+			function locatePricePerUnit(brandName){
+				var price;
+				for (var i = 0; i < brandList.length; i++){
+					if (brandList[i] == brandName){
+						price = priceList[i];
+					}
+    			}
+				return price;
+			}
+			function totalSubtotals(subtotalArray){
+				total = 0;
+				for (var i = 0; i < subtotalArray.length; i++){
+					total = subtotalArray[i] + total;
+    			}
+				return total;
+			}
+			function setToEmptyString(array){
+				for (var i = 0; i < array.length; i++){
+					array[i] = "";
+    			}
+			}
+			function setToZero(array){
+				for (var i = 0; i < array.length; i++){
+					array[i] = 0;
+    			}
+			}
+			function processArray(array){
+				for (var i = 0; i < array.length; i++){
+					array[i] = Number(array[i]);
+				}
+				return array;
+			}
+			// Initialize arrays 
+			brandList = new Array("iPhone", "Samsung", "Xiaomi", "OnePlus", "Nokia");
+			priceList = new Array(850, 670, 590, 550, 200);
+			displayBrandName = new Array(5);
+			setToEmptyString(displayBrandName);
+			displayUnitPrice = new Array(5);
+			setToZero(displayUnitPrice);
+			displayNumUnits = new Array(5);
+			setToZero(displayNumUnits);
+			displaySubtotal = new Array(5);
+			setToZero(displaySubtotal);
+			// Initialize appropriate variable here
+			brandName = "";
+			numUnits = 0;
+			counter = 0;
+		</script>
+ 	</head>
+	<body>
+		<h1>Cellphone Store</h1>
+		
+		<table>
+			<tr>
+				<td><b>Inputs</b></td>   
+			</tr>
+			<tr>
+				<td>Brand Name:</td>   
+				<td>
+					<!-- Text box for brand name --> 
+					<input type="text" id="brandNameInput" onchange=''>
+				</td>
+			</tr>
+
+				<td>Number of Units: </td>
+				<td>
+					<!-- Text box for number of units -->
+					<input type="text" id="numUnitsInput" onchange=''>
+				</td>
+			</tr>
+			<tr>
+				<td><b>Outputs</b></td>
+			</tr>
+			<tr>
+				<td>Price per Unit $: </td>
+				<td>
+					<!-- Text box for displaying price per unit -->
+					<input type="text" id="unitPriceOutput" onchange=''>
+				</td>	
+			</tr>
+			<tr>
+				<td>Subtotal $: </td>
+				<td> 
+					<!-- Text box for displaying subtotal --> 
+					<input type="text" id="subtotalOutput" onchange=''>
+				</td>
+			</tr>
+		</table>
+		
+		<p>
+ 	  	    <button onclick='
+				// Code for reading the data, processing the data and displaying the results on the appropriate text boxes
+				var pricePerUnit = locatePricePerUnit(brandNameInput.value);
+				var subtotal = pricePerUnit * Number(numUnitsInput.value);
+				unitPriceOutput.value = pricePerUnit;
+				subtotalOutput.value = subtotal;
+				displayBrandName[counter] = brandNameInput.value;
+				displayUnitPrice[counter] = pricePerUnit;
+				displayNumUnits[counter] = numUnitsInput.value;
+				displaySubtotal[counter] = subtotal;
+				counter = counter + 1;
+			'>Process</button>
+
+ 	  	    <button onclick='
+				// Code for clearing content of text boxes	
+				brandNameInput.value = "";
+				numUnitsInput.value = "";
+				unitPriceOutput.value = "";
+				subtotalOutput.value = "";
+			'>Clear</button>
+
+			<p><button onclick='
+				// Code to generate an invoice
+				document.write("<h1>Cellphone Store</h1>");
+				document.write("<h2>Invoice</h2>");
+				var d = new Date();
+				document.write("<p><i>Invoice Date: " + d + "</i></p>");
+				document.write("<hr></hr>");
+				document.write("<table>");
+					document.write("<tr>");
+					document.write("<td><b>Item</b></td>");
+					document.write("<td><b>Brand Name</b></td>");
+					document.write("<td><b>Unit Price</b></td>");
+					document.write("<td><b>Number of Units</b></td>");
+					document.write("<td><b>Subtotal</b></td>");
+					document.write("</tr>");
+					for (var i = 0; i < counter; i++){
+						document.write(""
+						+ "<tr>"
+							+ "<td>" + (i + 1) + "</td>"
+							+ "<td>" + displayBrandName[i] + "</td>"
+							+ "<td>" + displayUnitPrice[i] + "</td>"
+							+ "<td>" + displayNumUnits[i] + "</td>"
+							+ "<td>" + "$" + displaySubtotal[i] + "</td>"
+						+ "</tr>")
+					}
+				document.write("</table>");
+				document.write("<hr></hr>");
+				document.write("<h3>Order Total: $" + (totalSubtotals(displaySubtotal)).toFixed(2) + "</h3>");
+				document.write("<h3>Sales Tax: $" + ((.07)*(totalSubtotals(displaySubtotal))).toFixed(2) + "</h3>");
+				document.write("<h3>Final Bill: $" + (totalSubtotals(displaySubtotal) + (.07)*(totalSubtotals(displaySubtotal))).toFixed(2) + "</h3>");
+			'>Generate Invoice</button>
+		</p>
+ 	</body>
+</html>

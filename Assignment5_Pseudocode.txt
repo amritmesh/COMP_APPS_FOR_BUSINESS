@@ -1,0 +1,67 @@
+Start
+
+    SET Tire Replacement Option TO No
+    SET Tire Quality TO Null
+    SET # of Tires TO 0
+    SET Oil Change Option TO No
+    SET Oil Type TO Null
+    SET Concierge Service TO No
+    SET Concierge Fee TO 0
+    SET Vehicle Cleaning Option TO No
+
+    READ Tire Replacement Option
+    READ Tire Quality
+    READ # of Tires
+    READ Oil Change Option
+    READ Oil Type
+    READ Concierge Service
+    READ Vehicle Cleaning Option
+
+    IF Tire Replacement Option == Yes THEN
+        IF Tire Quality == Premium THEN
+            COMPUTE Tire Cost AS [(# of Tires) * (230 + 20)]
+        ELSE
+            COMPUTE Tire Cost AS [(# of Tires) * (150 + 20)]
+        ENDIF
+        COMPUTE Final Tire Cost AS (Tire Cost + 30)
+    ENDIF
+
+    IF Oil Change Option == Yes THEN
+        IF Oil Type == Synthetic THEN
+            SET Oil Cost TO 80
+        ELSE
+            SET Oil Cost TO 65
+        ENDIF
+        COMPUTE Final Oil Cost AS (Oil Cost + 30)
+    ENDIF
+
+    IF Concierge Service == Yes THEN
+        IF Vehicle Cleaning Option == Yes THEN
+            SET Cleaning Cost TO 40
+            COMPUTE Surcharge AS [.15 * (Cleaning Cost + Final Tire Cost + Final Oil Cost)]
+        ELSE
+            SET Cleaning Cost TO 0
+            COMPUTE Surcharge AS [.15 * (Cleaning Cost + Final Tire Cost + Final Oil Cost)]
+        ENDIF
+        IF Surcharge >= 75 THEN
+            SET Consierge Fee TO 75
+        ELSE
+            SET Concierge Fee TO Surcharge
+        ENDIF
+        SET Final Concierge Service Cost TO Cleaning Cost
+    ENDIF
+
+    COMPUTE Total Service Price AS (Final Tire Cost + Final Oil Cost + Final Concierge Service Cost)
+    DISPLAY Total Service Price
+
+    IF Concierge Service == Yes THEN
+        DISPLAY Concierge Fee
+    ENDIF
+
+    COMPUTE Sales Tax Amount AS [.07 * (Total Service Price + Concierge Fee)] --> ROUND TO NEAREST HUNDREDTHS PLACE USING FUNCTION
+    DISPLAY Sales Tax Amount
+            
+    COMPUTE Final Cost AS (Total Service Price + Concierge Fee + Sales Tax Amount)
+    DISPLAY Final Cost
+
+Stop

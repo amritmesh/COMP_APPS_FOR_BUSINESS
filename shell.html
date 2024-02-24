@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "UTF-8" />
+    <title> New Title </title>
+
+    <style>
+        body {background-color: bisque; font-family: optima;
+                  color: brown; text-align: center}
+        p { font-size: 20px}
+        button {font-size: 20px; background-color: coral}
+        input { font-size: 20px}
+     </style>
+  </head>
+  
+  <body>
+    <script>
+      function cuber(a){
+        return a*a*a;
+      }
+      // var myNumber = (Number)(prompt("Enter a number: "));
+      // document.write(cuber(myNumber));
+
+      function money(c, r, n, t)
+      {
+        return c * Math.pow((1 + (r / n)), n * t);
+      }
+
+      // var deposit = Number(prompt("Deposit: "));
+      // var years = Number(prompt("Years: "));
+      // var interest = Number(prompt("Rate: "));
+      // var num = Number(prompt("Num of Interest Payments: "));
+
+      // document.write(money(deposit, years, interest, num));
+
+      function pyramid(b, h)
+      {
+        var volume = (b * h) / 3;
+        return volume;
+      }
+
+      var baseArea = Number(prompt("Area of the base: "));
+      var height = Number(prompt("Height: "));
+
+      document.write("Volume: " + pyramid(baseArea, height) + " cubic meters");
+    </script>
+  </body>
+</html>

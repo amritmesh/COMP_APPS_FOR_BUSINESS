@@ -1,0 +1,14 @@
+<script>
+	var cardHolder, membership, discount;
+    cardHolder = prompt("Enter if you're a cardholder, Y/N: ");
+    if (cardHolder == "Y"){
+    	membership = prompt("Are you a Gold member? Y/N: ");
+        if (membership == "Y")
+        	alert("20% Discount");
+		else
+        	alert("10% Discount");
+    }
+	else{
+    	alert("0% Discount");
+    }
+</script>
